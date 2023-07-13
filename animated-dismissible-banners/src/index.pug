@@ -1,0 +1,22 @@
+- var banners = [{ icon: 'alert-circle-outline', class: 'error', message: 'Oops! Something went wrong!' }, {icon: 'checkmark-circle-outline', class:'success', message: 'Everything was fine!'},{icon: 'info-outline', class:'info', message: 'Here is some useful information'}];
+
+.banners-container
+  .banners
+    each banner in banners
+      .banner(class=banner.class)
+        .banner-icon
+          i(
+            data-eva=banner.icon,
+            data-eva-fill="#ffffff",
+            data-eva-height="48",
+            data-eva-width="48"
+          )
+        .banner-message= banner.message
+        .banner-close(onclick="hideBanners()")
+          i(data-eva="close-outline", data-eva-fill="#ffffff")
+
+button.show-banner(onclick="showBanner('.banner.error')") Show Error
+button.show-banner(onclick="showBanner('.banner.success')") Show Success
+button.show-banner(onclick="showBanner('.banner.info')") Show Info
+
+script(src="https://unpkg.com/eva-icons", onload="eva.replace()")
